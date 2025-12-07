@@ -1,0 +1,28 @@
+{
+  "name": "goit-js-4-hw-18",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "npx parcel src/index.html",
+    "build": "parcel build src/index.html --public-url /goit-js-4-hw-18/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rostyslav-afk/goit-js-4-hw-18.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rostyslav-afk/goit-js-4-hw-18/issues"
+  },
+  "homepage": "https://github.com/Rostyslav-afk/goit-js-4-hw-18#readme",
+  "devDependencies": {
+    "parcel": "^2.16.3",
+    "parcel-transformer-hbs": "^1.0.4"
+  },
+  "dependencies": {
+    "@partiellkorrekt/parcel-transformer-handlebars": "^1.0.5",
+    "handlebars": "^4.7.8"
+  }
+}

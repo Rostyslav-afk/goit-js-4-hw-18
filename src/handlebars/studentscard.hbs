@@ -1,0 +1,15 @@
+{{#each students}}
+  <tr>
+    <th>{{id}}</th>
+    <th>{{name}}</th>
+    <th>{{age}}</th>
+    <th>{{course}}</th>
+    <th>{{#each skills}}
+        {{this}}{{#unless @last}}, {{/unless}}
+      {{/each}}
+    </th>
+    <th>{{email}}</th>
+    <th>{{isEnrolled}}</th>
+    <th>Дії</th>
+  </tr>
+{{/each}}
