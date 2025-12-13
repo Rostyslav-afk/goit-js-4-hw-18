@@ -1,17 +1,18 @@
 {
   "students": [
     {
-      "id": "1",
       "name": "Ivan Petrenko",
-      "age": 15,
+      "age": 17,
       "course": "Web Development",
       "skills": [
         "HTML",
         "CSS",
-        "JavaScript"
+        "JavaScript",
+        "React"
       ],
       "email": "ivan.petrenko@example.com",
-      "isEnrolled": true
+      "isEnrolled": true,
+      "id": "1"
     },
     {
       "id": "2",

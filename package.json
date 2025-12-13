@@ -7,7 +7,7 @@
     "build": "parcel build src/index.html --public-url /goit-js-4-hw-18/",
     "server": "json-server --watch src/data/students.json --port 3000",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+      "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",

@@ -1,5 +1,7 @@
-export const deleteAStudent = (id) => {
-  return fetch(`http://localhost:3000/students/${id}`, {
+export const deleteAStudent = async (id) => {
+  const request = await fetch(`http://localhost:3000/students/${id}`, {
     method: "DELETE",
-  }).then((res) => res.json());
+  });
+  const data = request.json()
+  return data;
 };

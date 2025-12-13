@@ -6,8 +6,6 @@ import studentsCard from "./handlebars/studentscard.hbs";
 
 const getStudentsBtn = document.querySelector("#get-students-btn");
 const addStudentBtn = document.querySelector('button[type="submit"]');
-// const editStudentButton = document.querySelector(".editStudentButton");
-// const deleteStudentButton = document.querySelector(".deleteStudentButton");
 
 const addStudentForm = document.querySelector("#add-student-form");
 const tbody = document.querySelector("tbody");
@@ -22,15 +20,14 @@ function renderStudents(students) {
   tbody.innerHTML = studentsCard({ students });
 }
 
-getStudentsBtn.addEventListener("click", () => {
-  getStudents().then((studentsData) => {
-    renderStudents(studentsData.students);
-  });
+getStudentsBtn.addEventListener("click", async () => {
+  const studentsData = await getStudents();
+  renderStudents(studentsData.students);
 });
 
 // Функція для додавання нового студента
 
-function addStudent(e) {
+async function addStudent(e) {
   e.preventDefault();
 
   const { name, age, course, skills, email, isEnrolled } = e.target.elements;
@@ -47,17 +44,17 @@ function addStudent(e) {
     isEnrolled: isEnrolled.checked,
   };
 
-  postAnStudent(data).then((res) => {
-    renderStudents();
-    addStudentForm.reset();
-  });
+  await postAnStudent(data);
+  const studentData = await getStudents();
+  renderStudents(studentsData.students);
+  addStudentForm.reset();
 }
 
 addStudentForm.addEventListener("submit", (e) => addStudent(e));
 
 // Функція для оновлення студента
 
-function updateStudent(id) {
+async function updateStudent(id) {
   const student = students.students.find((s) => s.id === id);
 
   if (!student) return;
@@ -86,11 +83,9 @@ function updateStudent(id) {
     isEnrolled: newIsEnrolled,
   };
 
-  updateAStudent(id, updatedData).then(() => {
-    getStudents().then((studentsData) => {
-      renderStudents(studentsData.students);
-    });
-  });
+  await updateAStudent(id, updatedData);
+  const studentsData = await getStudents();
+  renderStudents(studentsData.students);
 }
 
 tbody.addEventListener("click", (e) => {
@@ -104,8 +99,7 @@ tbody.addEventListener("click", (e) => {
   }
 });
 
-function deleteStudent(id) {
-  deleteAStudent(id).then((res) => {
-    renderStudents(res.students)
-  });
-};
+async function deleteStudent(id) {
+  const res = await deleteAStudent(id);
+  renderStudents(res.students);
+}
